@@ -19,8 +19,32 @@ function insertionSort(arr) {
   */
 
   // Your code here
-}
+  // [[2, 4, 6, 8, 1, 3, 5, 7, 9] ==============> []
+  const copyArr = [...arr];
+  const sorted = [];
 
+  while (copyArr.length) {
+    console.log(sorted.join(','));
+    let key = copyArr.pop();
+
+    // sorted.push(null);
+    let i = sorted.length - 1;
+    // for (i; i > -1 && sorted[i] > key; i--) {
+    //   sorted[i + 1] = sorted[i];
+    // }
+    while (i > -1 && sorted[i] > key) {
+      sorted[i + 1] = sorted[i];
+
+      i--;
+    }
+    sorted[i + 1] = key;
+  }
+
+  return sorted
+}
+let arr = [2, 4, 6, 8, 1, 3, 5, 7, 9];
+// insertionSort(arr)
+// console.log(insertionSort(arr))
 // In-place Insertion Sort
 // Mutates the original array
 function insertionSortInPlace(arr) {
@@ -41,6 +65,42 @@ function insertionSortInPlace(arr) {
   */
 
   // Your code here
+  let sorted = arr;
+  let divider = 0;
+
+  while (divider + 1 <= sorted.length - 1) {
+    console.log(sorted.join(','));
+    let temp = sorted[divider + 1];
+
+    let i = divider;
+    while (i > -1 && sorted[i] > temp) {
+      sorted[i + 1] = sorted[i];
+
+      i--;
+    }
+    sorted[i + 1] = temp;
+
+    divider++
+  }
+  return sorted;
 }
 
 module.exports = [insertionSort, insertionSortInPlace];
+
+/**
+ * for (let i = 1; i < arr.length; i++) {
+    let j = i - 1;
+    let key = arr[i]
+    console.log(sorted.join(','));
+
+    while (j >= 0 && sorted[j] > key) {
+      // console.log(sorted.join(','));
+      // let temp = 
+      sorted[j + 1] = sorted[j];
+
+      j--;
+    }
+
+    sorted[j + 1] = key;
+  }
+ */
